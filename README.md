@@ -23,8 +23,8 @@ A simple World of Warcraft Classic addon that allows you to designate a player a
 
 ## Installation
 
-1. Download the addon
-2. Extract to your `World of Warcraft\_classic_\Interface\AddOns` folder
+1. Download the addon from [this link](https://github.com/Eureka-Games/WoW-QuickAssist/releases/download/v1.0/QuickAssist.zip) or visit [Releases](https://github.com/Eureka-Games/WoW-QuickAssist/releases) section
+2. Extract to your `World of Warcraft\Interface\AddOns` folder
 3. The folder structure should look like: `Interface\AddOns\QuickAssist\`
 4. Restart World of Warcraft if it's running
 5. Set up your keybind in the game's Key Bindings menu
