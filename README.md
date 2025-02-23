@@ -20,6 +20,7 @@ A simple World of Warcraft Classic addon that allows you to designate a player a
 1. Right-click on any player, party member, or raid member
 2. Select "Set as Assist Target" from the menu
 3. Use your assigned keybind to quickly assist their target
+4. You can also set another key for selecting you current QA Target
 
 ## Installation
 
@@ -35,7 +36,7 @@ Set up your assist keybind through the standard WoW interface:
 1. Open Game Menu
 2. Go to Key Bindings
 3. Look for "QuickAssist" section
-4. Set your preferred key for "Assist Target"
+4. Set your preferred key for "Assist Target" and "Select QA Target"
 
 ## Use Cases
 
