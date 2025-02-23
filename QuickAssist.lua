@@ -8,7 +8,7 @@ QuickAssist.targetName = nil
 -- Initialize DB immediately
 QuickAssistDB = QuickAssistDB or {}
 
-print("QuickAssist: Addon loaded")
+-- print("QuickAssist: Addon loaded")
 
 -- Slash commands
 SLASH_QUICKASSIST1 = "/qa"
@@ -16,19 +16,19 @@ SLASH_QUICKASSIST2 = "/quickassist"
 
 -- Save variables between sessions
 function QuickAssist_OnLoad()
-    print("QuickAssist: OnLoad called")
+--     print("QuickAssist: OnLoad called")
 
     -- Ensure DB exists
     QuickAssistDB = QuickAssistDB or {}
     QuickAssistDB.targetName = QuickAssistDB.targetName or nil
 
     QuickAssist.targetName = QuickAssistDB.targetName
-    print("QuickAssist: Local targetName set to:", tostring(QuickAssist.targetName))
+--     print("QuickAssist: Local targetName set to:", tostring(QuickAssist.targetName))
 end
 
 -- Event handler
 QuickAssist:SetScript("OnEvent", function(self, event)
-    print("QuickAssist: Event fired:", event)
+--     print("QuickAssist: Event fired:", event)
     if event == "VARIABLES_LOADED" then
         QuickAssist_OnLoad()
     end
@@ -36,7 +36,7 @@ end)
 
 -- Function to set target
 function QuickAssist:SetTarget(name)
-    print("QuickAssist: SetTarget called with name:", tostring(name))
+--     print("QuickAssist: SetTarget called with name:", tostring(name))
 
     -- Ensure DB exists before setting
     QuickAssistDB = QuickAssistDB or {}
@@ -63,6 +63,14 @@ function QuickAssist:AssistTarget()
         else
             DEFAULT_CHAT_FRAME:AddMessage("QuickAssist: No assist target set and no target selected", 1, 0, 0)
         end
+    end
+end
+
+function QuickAssist:SelectTarget()
+    if self.targetName then
+        TargetByName(self.targetName)
+    else
+        DEFAULT_CHAT_FRAME:AddMessage("QuickAssist: No assist target set", 1, 0, 0)
     end
 end
 
@@ -118,7 +126,12 @@ table.insert(UnitPopupMenus["RAID"], "SET_ASSIST_TARGET")
 -- Binding functions
 BINDING_HEADER_QUICKASSIST = "QuickAssist"
 BINDING_NAME_QUICKASSIST = "Assist Target"
+BINDING_NAME_SELECTTARGET = "Select QA Target"
 
-function QuickAssistBinding()
+function QAAssistBinding()
     QuickAssist:AssistTarget()
+end
+
+function QASelectTargetBinding()
+    QuickAssist:SelectTarget()
 end

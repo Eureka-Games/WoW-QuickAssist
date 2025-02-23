@@ -1,5 +1,9 @@
 <Bindings>
     <Binding name="QUICKASSIST" header="QUICKASSIST">
-        QuickAssistBinding();
+        QAAssistBinding();
+    </Binding>
+
+    <Binding name="SELECTTARGET" header="QUICKASSIST">
+        QASelectTargetBinding();
     </Binding>
 </Bindings>
