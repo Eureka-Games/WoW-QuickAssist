@@ -1,0 +1,5 @@
+<Bindings>
+    <Binding name="QUICKASSIST" header="QUICKASSIST">
+        QuickAssistBinding();
+    </Binding>
+</Bindings>
