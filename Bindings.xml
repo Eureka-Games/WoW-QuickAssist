@@ -6,4 +6,12 @@
     <Binding name="SELECTTARGET" header="QUICKASSIST">
         QASelectTargetBinding();
     </Binding>
+
+    <Binding name="CLEARTARGET" header="QUICKASSIST">
+        QAClearTargetBinding();
+    </Binding>
+
+    <Binding name="SETTARGET" header="QUICKASSIST">
+        QASetTargetBinding();
+    </Binding>
 </Bindings>

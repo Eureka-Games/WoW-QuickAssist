@@ -57,7 +57,7 @@ function QuickAssist:AssistTarget()
         TargetByName(self.targetName)
         AssistUnit("target")
     else
-        -- If no target is set, assist current target
+        -- If no "assist" target is set, assist current target
         if UnitExists("target") then
             AssistUnit("target")
         else
@@ -103,6 +103,9 @@ function UnitPopup_OnClick()
         end
         PlaySound("UChatScrollButton")
         CloseDropDownMenus()
+
+    elseif this and this.value == "CLEAR_ASSIST_TARGET" then
+        QuickAssist:SetTarget(nil)
     else
         original_UnitPopup_OnClick()
     end
@@ -110,6 +113,7 @@ end
 
 -- Add option to UnitPopupMenus
 UnitPopupButtons["SET_ASSIST_TARGET"] = { text = "Set as Assist Target", dist = 0 }
+UnitPopupButtons["CLEAR_ASSIST_TARGET"] = { text = "Clear Assist Target", dist = 0 }
 
 -- Make sure menus are defined before adding our option
 if not UnitPopupMenus["SELF"] then UnitPopupMenus["SELF"] = {} end
@@ -119,6 +123,8 @@ if not UnitPopupMenus["RAID"] then UnitPopupMenus["RAID"] = {} end
 
 -- Add our option to various menus
 table.insert(UnitPopupMenus["SELF"], "SET_ASSIST_TARGET")
+table.insert(UnitPopupMenus["SELF"], "CLEAR_ASSIST_TARGET")
+
 table.insert(UnitPopupMenus["PARTY"], "SET_ASSIST_TARGET")
 table.insert(UnitPopupMenus["PLAYER"], "SET_ASSIST_TARGET")
 table.insert(UnitPopupMenus["RAID"], "SET_ASSIST_TARGET")
@@ -126,7 +132,9 @@ table.insert(UnitPopupMenus["RAID"], "SET_ASSIST_TARGET")
 -- Binding functions
 BINDING_HEADER_QUICKASSIST = "QuickAssist"
 BINDING_NAME_QUICKASSIST = "Assist Target"
-BINDING_NAME_SELECTTARGET = "Select QA Target"
+BINDING_NAME_SELECTTARGET = "Select Assist Target"
+BINDING_NAME_CLEARTARGET = "Clear Assist Target"
+BINDING_NAME_SETTARGET = "Set as Assist Target"
 
 function QAAssistBinding()
     QuickAssist:AssistTarget()
@@ -134,4 +142,14 @@ end
 
 function QASelectTargetBinding()
     QuickAssist:SelectTarget()
+end
+
+function QAClearTargetBinding()
+    QuickAssist:SetTarget(nil)
+end
+
+function QASetTargetBinding()
+    if UnitExists("target") then
+        QuickAssist:SetTarget(UnitName("target"))
+    end
 end
